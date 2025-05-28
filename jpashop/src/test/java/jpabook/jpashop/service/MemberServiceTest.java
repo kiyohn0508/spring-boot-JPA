@@ -1,13 +1,12 @@
 package jpabook.jpashop.service;
 
+import jpabook.jpashop.domain.Member;
+
+import jpabook.jpashop.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-
-import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.repository.MemberRepository;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -41,9 +40,9 @@ public class MemberServiceTest {
 
         // when
         memberService.join(member1);
-        memberService.join(member2); // 예외 발생!
+        
 
         // then
-        fail("예외가 발생해야 한다.");
+        assertThrows(IllegalStateException.class, () -> memberService.join(member2));
     }
 }
