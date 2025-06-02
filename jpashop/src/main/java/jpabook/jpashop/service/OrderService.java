@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import jpabook.jpashop.domain.OrderSearch;
 import jpabook.jpashop.domain.Delivery;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
@@ -54,10 +55,8 @@ public class OrderService {
 
 
     // 검색
-    /*
     public List<Order> findOrders(OrderSearch orderSearch){
-        return orderRepositoy.findAll(orderSearch);
+        return orderRepositoy.findAllCriteria(orderSearch);
     }
-    */
     
 }

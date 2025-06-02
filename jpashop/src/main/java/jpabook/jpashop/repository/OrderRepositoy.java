@@ -10,7 +10,7 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Root;
 import jpabook.jpashop.domain.Order;
-import jpabook.jpashop.repository.OrderSearch;
+import jpabook.jpashop.domain.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.Predicate;
@@ -92,4 +92,11 @@ public class OrderRepositoy {
         TypedQuery<Order> query = em.createQuery(cq).setMaxResults(1000); //최대 1000건
         return query.getResultList();
     }
+
+    public List<Order> findAllByString(OrderSearch orderSearch) {
+    List<Order> orders = em.createQuery("select o from Order o where o.member.name = :name", Order.class)
+            .setParameter("name", "kim")
+            .getResultList();
+    return  orders;
+}
 }
